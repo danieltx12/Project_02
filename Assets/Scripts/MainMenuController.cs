@@ -16,6 +16,7 @@ public class MainMenuController : MonoBehaviour
         if(_startingSong != null && AudioManager.Instance == null)
         {
             AudioManager.Instance.PlaySong(_startingSong);
+            Debug.Log("menucontrolplay");
         }
     }
 

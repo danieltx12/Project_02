@@ -6,10 +6,14 @@ using UnityEngine.UI;
 public class Level01Controller : MonoBehaviour
 {
     [SerializeField] Text _currentScoreTextView;
+    [SerializeField] Image _healthBar;
     [SerializeField] GameObject _menu;
+    [SerializeField] GameObject _deathMenu;
+    [SerializeField] GameObject player;
     bool menuState = false;
-    bool cursorState = true;
+    bool cursorState = false;
     int _currentScore;
+    int playerHealth = 500;
 
      void Start()
     {
@@ -41,6 +45,10 @@ public class Level01Controller : MonoBehaviour
         SceneManager.LoadScene("MainMenu");
     }
 
+    public void Retry()
+    {
+        SceneManager.LoadScene("Level01");
+    }
     public void IncreaseScore(int scoreIncrease)
     {
         _currentScore += scoreIncrease;
@@ -63,5 +71,23 @@ public class Level01Controller : MonoBehaviour
             Cursor.lockState = CursorLockMode.Locked;
         }
         Debug.Log("TOGGLE");
+    }
+
+    public void Damage()
+    {
+        playerHealth -= 100;
+        _healthBar.rectTransform.sizeDelta = new Vector2(playerHealth, 100);
+        if (playerHealth == 0)
+        {
+            Die();
+        }
+    }
+
+    public void Die()
+    {
+        _deathMenu.SetActive(true);
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        player.SetActive(false);
     }
 }

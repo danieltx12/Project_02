@@ -28,5 +28,6 @@ public class AudioManager : MonoBehaviour
     {
         _audioSource.clip = clip;
         _audioSource.Play();
+        Debug.Log("audiomanagerplay");
     }
 }
