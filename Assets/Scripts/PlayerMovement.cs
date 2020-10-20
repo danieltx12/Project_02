@@ -67,11 +67,18 @@ public class PlayerMovement : MonoBehaviour
             speed = walkSpeed;
         }
 
+       
+
     }
 
     public void playGunshot(AudioClip gunClip)
     {
         _gunAudio.clip = gunClip;
         _gunAudio.Play();
+    }
+
+    public void velReset()
+    {
+        velocity.y = 0;
     }
 }

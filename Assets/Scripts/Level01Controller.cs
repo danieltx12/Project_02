@@ -28,10 +28,11 @@ public class Level01Controller : MonoBehaviour
             
         }
 
-        if (Input.GetKeyDown(KeyCode.Q))
+      /* if (Input.GetKeyDown(KeyCode.Q))
             {
             IncreaseScore(5);
             }
+            */
     }
 
     public void ExitLevel()

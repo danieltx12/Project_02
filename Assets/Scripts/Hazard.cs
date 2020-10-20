@@ -18,9 +18,22 @@ public class Hazard : MonoBehaviour
     // Update is called once per frame
      void OnTriggerEnter(Collider other)
     {
-
-        levelController.Damage();
-
-
-    }
+        if (other.tag == "Player")
+        {
+            levelController.Damage();
+            if (gameObject.tag == "Projectile")
+            {
+                Destroy(gameObject);
+            }
+        }
+        else
+        {
+            if (gameObject.tag == "Projectile" && other.tag != "Enemy")
+            {
+                Destroy(gameObject);
+            }
+        }
+        
+      
+        }
 }
